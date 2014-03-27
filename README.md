@@ -23,5 +23,5 @@
 
 ## Enlaces
 
-* Heroku: http://analizador-p6pdl.herokuapp.com/
-* Pruebas: http://analizador-p6pdl.herokuapp.com/tests
+* Heroku: Proximamente
+* Pruebas: Proximamente
