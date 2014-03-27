@@ -23,5 +23,5 @@
 
 ## Enlaces
 
-* Heroku: Proximamente
-* Pruebas: Proximamente
+* Heroku: http://pl-peg-js.herokuapp.com/
+* Pruebas: http://pl-peg-js.herokuapp.com/tests
