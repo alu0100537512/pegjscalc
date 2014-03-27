@@ -1,29 +1,49 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>pegjs</title>
-    <link rel="icon" type="image/jpg" href="favicon.jpg" />
+
+    <title> Analizador PL0 </title>
+    
+    <meta name="Author" content="Enrique Tejera González -> alu0100537512" />  
+    <meta name="Description" content="Analizador L&eacute;xico de JavaScript" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="/styles.css" type="text/css" media="screen" charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <!-- CodeMirror -->
+    <script src="script/texto.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="mode/pascal/pascal.js"></script>
+    
+    <!-- Tests -->
+    <script src="tests/chai.js"></script>
+    <script src="/tests/mocha.js"></script>
+    <script src="script/main.js"></script>
+    <script src="pl0.js"></script>
+    <script>mocha.setup('tdd')</script>
+    <script src="/tests/tests.js"></script>
+    
   </head>
   <body>
     <nav>
       <ul>
-        <li> <a href="/grammar"  title="Grammar" <%=current?("/grammar")%>>Grammar</a> </li>
         <li> <a href="/"  title="Home" <%=current?("/")%>>Home</a> </li>
-        <li> <a href="http://campusvirtual.ull.es/1314/course/view.php?id=1104"  title="PL-UDV">PL-UDV</a> </li>
-        <li> <a href="https://github.com/crguezl/pegjscalc"  title="Repo">Repo</a> </li>
-        <li> <a href="http://en.wikipedia.org/wiki/Recursive_descent_parser#Example_parser"   title="Wikipedia">PL0</a> </li>
-        <li> <a href="http://pegjs.majda.cz/"  title="PEG.js">PEG.js</a> </li>
-        <li> <a href="http://datamapper.org/"  title="DataMapper">DataMapper</a> </li>
-        <li> <a href="http://sass-lang.com/"  title="Sass">Sass</a> </li>
-        <li> <a href="http://crguezl.github.io/pl-html/"  title="PLGH">PL-GH</a> </li>
-        <li> <a href="http://docs.mathjax.org/en/latest/start.html"  title="MathJax">MathJax</a> </li>
-        <li> <a href="https://plus.google.com/u/0/+CasianoRodriguezLeon/" title="crguezl">crguezl</a> </li>
+        <li> <a href="/grammar"  title="Grammar" <%=current?("/grammar")%>>Gramática</a> </li>
+        <li> <a href="https://github.com/alu0100537512/pegjscalc"  title="GitHub">GitHub</a> </li>
+        <li> <a href="/tests"  title="Tests" <%=current?("/tests")%>>Tests</a> </li>
       </ul>
     </nav>
+    
     <%= yield %>
+    
+    <footer>
+      <div id="piedepagina">
+        Práctica: Analizador de PL0 Ampliado Usando PEG.js | <a href="https://github.com/alu0100537512/">Enrique Tejera González</a> <br> 
+      </div>
+    </footer>
   </body>
 </html>
 

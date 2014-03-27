@@ -1,8 +1,5 @@
-<h1>Analizador de PL0 ampliado usando PEG.js</h1>
 <div id="content">
-  <p class="loadfile">
-    <input type="file" id="examples" />
-  </p>
+<h1>Analizador de PL0 ampliado utilizando PEG.js</h1>
   <p>
   <nav>
   <ul>
@@ -11,30 +8,62 @@
     <% end %>
   </ul>
   </nav>
+  <p class="loadfile">
+    <input type="file" id="examples" />
+  </p>
   <table>
     <tr>
       <td>
         <form action="/save" method="post">
           <textarea id="input" name="input" 
-                    autofocus cols = "40" rows = "4">
+                    autofocus cols = "80" rows = "6">
 <%= source %>
           </textarea>
           <br/>
-          <label for="saveas">Save as</label>
-          <input id="saveas" type="text" name="fname" 
-                 title="name" pattern="\w+" />
+          <label for="saveas"><b>Guardar como:  </b><input id="saveas" type="text" name="fname" 
+                 title="name" pattern="\w+" /></label>
+          
         </form>
       </td>
-      <td><button id="parse" type="button">parse</button></td>
     </tr>
   </table>
+  <button id="parse" type="button">Analizar</button>
   </p>
   <div class="output">
     <pre>
-<span id="output"></span> <!-- Output goes here! --> 
+<span id="output"></span>
     </pre>
   </div>
 </div>
 
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
+        lineNumbers: true,
+        viewportMargin: Infinity,
+        mode: "text/x-pascal"
+      });
+
+    
+      function dump(fileName) {
+        $.get(fileName, function (data) {
+          $("#input").val(data);
+            editor.setValue(data);
+        });
+      };
+      
+      document.getElementById('files').addEventListener('change', CopyMe, false);
+
+        function CopyMe(evt) {
+          var file = evt.target.files[0];
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) { 
+              editor.setValue(e.target.result);
+            }
+            var c = reader.readAsText(file);
+          }
+          else { alert("Failed to load file"); }
+        }
+   </script>
 <script src="pl0.js"></script>
 <script src="main.js"></script>
