@@ -28,15 +28,21 @@ get '/grammar' do
   erb :grammar
 end
 
+get '/tests' do
+  erb :tests
+end
+
+
 get '/:selected?' do |selected|
   programs = PL0Program.all
   pp programs
   puts "selected = #{selected}"
   c  = PL0Program.first(:name => selected)
-  source = if c then c.source else "a = 3-2-1" end
+  source = if c then c.source else "a = 3-2-1." end
   erb :index, 
       :locals => { :programs => programs, :source => source }
 end
+                 
 
 post '/save' do
   pp params
@@ -47,10 +53,21 @@ post '/save' do
     c.source = params["input"]
     c.save
   else
+                   
+        if PL0Program.all.size > 9
+                 #num = rand(1..9)
+                 #c = PL0Program.get(num)
+                 #c.destroy!
+                 c = PL0Program.all.sample()
+                 c.destroy!
+        end
+   # if PL0Program.all.size < 10
     c = PL0Program.new
     c.name = params["fname"]
     c.source = params["input"]
     c.save
+    #end
+    
   end
   pp c
   redirect '/'
